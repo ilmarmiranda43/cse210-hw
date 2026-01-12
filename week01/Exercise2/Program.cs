@@ -35,13 +35,16 @@ class Program
         string sign = "";
         int lastDigit = percentage % 10;
 
-        if (lastDigit >= 7)
+        if (percentage != 100)
         {
-            sign = "+";
-        }
-        else if (lastDigit < 3)
-        {
-            sign = "-";
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
         }
 
         if (letter == "A" && sign == "+")
