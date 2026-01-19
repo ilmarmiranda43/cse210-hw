@@ -12,12 +12,16 @@ public class Journal
 
     public void SaveToFile(string filename)
     {
+        if (!filename.EndsWith(".txt"))
+            filename += ".txt";
+
         using (StreamWriter outPutFile = new StreamWriter(filename))
         {
             foreach (Entry en in _entries)
                 outPutFile.WriteLine($"{en._date}|{en._promptText}|{en._entryText}");
         }
     }
+
 
     public void LoadFromFile(string filename)
     {
