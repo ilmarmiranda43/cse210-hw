@@ -12,16 +12,12 @@ public class Journal
 
     public void SaveToFile(string filename)
     {
-        if (!filename.EndsWith(".txt"))
-            filename += ".txt";
-
         using (StreamWriter outPutFile = new StreamWriter(filename))
         {
             foreach (Entry en in _entries)
-                outPutFile.WriteLine($"{en._date}|{en._promptText}|{en._entryText}");
+                outPutFile.WriteLine($"{en.Date}|{en.Time}|{en.PromptText}|{en.EntryText}|{en.Mood}|{en.Tags}");
         }
     }
-
 
     public void LoadFromFile(string filename)
     {
@@ -34,10 +30,53 @@ public class Journal
             if (parts.Length < 3) continue;
 
             Entry e = new Entry();
-            e._date = parts[0];
-            e._promptText = parts[1];
-            e._entryText = parts[2];
+            e.Date = parts[0];
+            e.Time = parts[1];
+            e.PromptText = parts[2];
+            e.EntryText = parts[3];
+            e.Mood = parts[4];
+            e.Tags = parts[5];
             _entries.Add(e);
+
         }
     }
+
+    public void Search(string keyword)
+    {
+        if (string.IsNullOrWhiteSpace(keyword))
+        {
+            Console.WriteLine("Type a keyword to search.");
+            return;
+        }
+
+        int found = 0;
+        foreach (var e in _entries)
+        {
+            if ((e.EntryText ?? "").Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                (e.PromptText ?? "").Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                (e.Tags ?? "").Contains(keyword, StringComparison.OrdinalIgnoreCase))
+            {
+                e.Display();
+                Console.WriteLine();
+                found++;
+            }
+        }
+
+        Console.WriteLine($"Found: {found}");
+    }
+
+    public void ShowStats()
+    {
+        Console.WriteLine($"Total entries: {_entries.Count}");
+
+        int totalWords = 0;
+        foreach (var e in _entries)
+        {
+            totalWords += e.WordCount();
+        }
+
+        Console.WriteLine($"Total words: {totalWords}");
+    }
+
+
 }
