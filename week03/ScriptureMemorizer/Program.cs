@@ -6,6 +6,15 @@ public class Program
 {
     static void Main()
     {
+
+        /*
+            Exceeding requirements:
+             - Menu system + difficulty selection (words hidden per round)
+             - Choose random OR pick scripture
+             - Session summary (rounds, total words, completed or quit)
+
+        */
+
         List<Scripture> library = BuildScriptureLibrary();
 
         while (true)
@@ -41,11 +50,8 @@ public class Program
         Console.WriteLine("Bye! 👋");
     }
 
-    // ------------------ MAIN FLOW ------------------
-
     static void RunMemorizer(Scripture scriptureTemplate)
     {
-        // Importante: usar uma cópia (para não “estragar” o template na biblioteca)
         Scripture scripture = scriptureTemplate.Clone();
 
         int rounds = 0;
@@ -96,8 +102,6 @@ public class Program
         Console.ReadLine();
     }
 
-    // ------------------ MENU HELPERS ------------------
-
     static Scripture PickRandomScripture(List<Scripture> library)
     {
         Random rnd = new Random();
@@ -121,7 +125,7 @@ public class Program
             int choice = ReadInt("Option: ", 1, library.Count + 1);
 
             if (choice == library.Count + 1)
-                return PickRandomScripture(library); // fallback (não trava o fluxo)
+                return PickRandomScripture(library); 
 
             return library[choice - 1];
         }
@@ -141,38 +145,32 @@ public class Program
         }
     }
 
-    // ------------------ DATA ------------------
-
     static List<Scripture> BuildScriptureLibrary()
     {
-        // Exceeding requirements:
-        // - Menu system + difficulty selection (words hidden per round)
-        // - Choose random OR pick scripture
-        // - Session summary (rounds, total words, completed or quit)
-
+        
         return new List<Scripture>
         {
             new Scripture(
-                new Reference("Proverbs", 3, 5, 6),
-                "Trust in the Lord with all thine heart; and lean not unto thine own understanding. " +
-                "In all thy ways acknowledge him, and he shall direct thy paths."
+                new Reference("John", 21, 10),
+                "Jesus saith unto them, Bring of the fish which ye have now caught. "
             ),
 
             new Scripture(
-                new Reference("John", 3, 16),
-                "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him " +
-                "should not perish, but have everlasting life."
+                new Reference("Exodus", 33, 11),
+                "And the Lord spake unto Moses face to face, as a man speaketh unto his friend. \n" +
+                "And he turned again into the camp: but his servant Joshua, the son of Nun, a young man, \n" + 
+                "departed not out of the tabernacle should not perish, but have everlasting life."
             ),
 
             new Scripture(
-                new Reference("2 Nephi", 2, 25),
-                "Adam fell that men might be; and men are, that they might have joy."
+                new Reference("Mosiah", 2, 17),
+                "And behold, I tell you these things that ye may learn wisdom; \n" +
+                "that ye may learn that when ye are in the service of your fellow \n" +
+                "beings ye are only in the service of your God."
             )
         };
     }
 }
-
-// ================== DIFFICULTY SETTINGS ==================
 
 public static class DifficultySettings
 {
