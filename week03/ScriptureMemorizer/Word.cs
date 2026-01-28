@@ -1,11 +1,8 @@
-using System;
-using System.Text;
-using System.Text.Encodings.Web;
-
 public class Word
 {
     private string _text;
     private bool _isHidden;
+
 
     public Word(string text)
     {
@@ -13,31 +10,25 @@ public class Word
         _isHidden = false;
     }
 
-    public void Hide()
-    {
-        _isHidden = true;
-    }
 
-    public void Show()
-    {
-        _isHidden = false;
-    }
+    public void Hide() => _isHidden = true;
+    public bool IsHidden() => _isHidden;
 
-    public bool IsHidden()
-    {
-        return _isHidden;
-    }
 
     public string GetDisplayText()
     {
-        if (_isHidden)
-        {
-            return new string ('_', _text.Length);
-        }
-        else
-        {
-            return _text;
-        }
+        if (!_isHidden) return _text;
 
+
+        // Keep same length (underscores)
+        return new string('_', _text.Length);
+    }
+
+
+    public Word Clone()
+    {
+        Word copy = new Word(_text);
+        if (_isHidden) copy.Hide();
+        return copy;
     }
 }
