@@ -1,0 +1,3 @@
+500
+SimpleGoal:Reading The Book of Mormon,I will read 30 minutos each day,50,True
+EternalGoal:Temple,I will go to the Temple one time to month,150

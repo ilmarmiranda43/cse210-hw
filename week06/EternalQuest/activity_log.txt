@@ -1,0 +1,5 @@
+2026-02-12 20:30:53 | Goal: Reading The Book of Mormon | Earned: 50 | Total: 50
+2026-02-12 20:31:05 | Goal: Temple | Earned: 150 | Total: 200
+2026-02-12 20:31:13 | Goal: Reading The Book of Mormon | Earned: 0 | Total: 200
+2026-02-12 20:31:18 | Goal: Temple | Earned: 150 | Total: 350
+2026-02-12 20:31:27 | Goal: Temple | Earned: 150 | Total: 500
