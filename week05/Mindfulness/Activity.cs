@@ -6,6 +6,7 @@ public abstract class Activity
     private readonly string _name;
     private readonly string _description;
     private int _durationSeconds;
+    protected string Name => _name;
 
     protected Activity(string name, string description)
     {
@@ -21,6 +22,8 @@ public abstract class Activity
         PrepareToBegin();
         PerformActivity();
         EndMessage();
+
+        ActivityLog.Write(Name, GetDurationSeconds());
     }
 
     protected abstract void PerformActivity();

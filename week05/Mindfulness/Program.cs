@@ -1,5 +1,9 @@
 using System;
 
+// Exceeding Requirements:
+// I added a logging feature that saves each completed activity (date/time, activity name, and duration in seconds)
+// to a file named "log.txt".
+
 class Program
 {
     static void Main()
