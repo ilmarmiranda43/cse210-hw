@@ -1,0 +1,31 @@
+1. Meaning
+
+Polymorphism is a principle in object-oriented programming that means “many forms.” It allows different classes that inherit from the same base class to use the same method name but have different behavior. 
+In C#, this usually happens when a base class has a method that is virtual or abstract, and the child classes override it. Even though the method name is the same, 
+what it does depends on the type of object. So the program can treat different objects in a similar way, but they still act differently when the method runs.
+
+2. Benefits
+
+One benefit of polymorphism is that it makes the program easier to manage and expand. We can write code that works with the base class instead of checking each specific type. 
+This means if we add a new type of goal later, we don’t have to change the main logic of the program. It keeps the code cleaner and more organized.
+
+3. Application
+
+In the Eternal Quest program, we have different types of goals like SimpleGoal, EternalGoal, and ChecklistGoal. They all inherit from the Goal class. Each one overrides the RecordEvent() method. 
+When the GoalManager loops through a List<Goal> and calls RecordEvent(), each goal responds in its own way. A SimpleGoal completes once, an EternalGoal never completes, and a ChecklistGoal tracks progress and gives a bonus.
+
+4. Length
+
+This explanation describes what polymorphism is, why it is useful, and how it is used in the Eternal Quest program. It connects the concept to the real code from the assignment and clearly explains how the method 
+behaves differently depending on the object.
+
+5. Code
+List<Goal> goals = new List<Goal>();
+
+goals.Add(new SimpleGoal("Read", "Read 10 pages", 100));
+goals.Add(new EternalGoal("Pray", "Daily prayer", 50));
+
+foreach (Goal goal in goals)
+{
+    goal.RecordEvent();
+}
