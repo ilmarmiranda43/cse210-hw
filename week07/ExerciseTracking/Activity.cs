@@ -12,8 +12,7 @@ public abstract class Activity
     }
 
     protected int GetMinutes() => _minutes;
-
-    // Requisitos: declarar (não implementar) e sobrescrever nas filhas
+    
     public abstract double GetDistance(); // km
     public abstract double GetSpeed();    // kph
     public abstract double GetPace();     // min per km

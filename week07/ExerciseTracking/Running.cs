@@ -14,13 +14,13 @@ public class Running : Activity
 
     public override double GetSpeed()
     {
-        // kph = (distance / minutes) * 60
+        
         return (GetDistance() / GetMinutes()) * 60.0;
     }
 
     public override double GetPace()
     {
-        // min per km = minutes / distance
+        
         return GetMinutes() / GetDistance();
     }
 }
